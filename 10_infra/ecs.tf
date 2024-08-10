@@ -16,6 +16,10 @@ resource "aws_ecs_cluster" "webapp" {
   }
 }
 
+resource "aws_iam_service_linked_role" "ecs" {
+  aws_service_name = "ecs.amazonaws.com"
+}
+
 # ---------------------------------------------
 # Elastic Container Service - Service
 # ---------------------------------------------
@@ -48,6 +52,7 @@ resource "aws_ecs_service" "webapp" {
   lifecycle {
     ignore_changes = [desired_count, task_definition, load_balancer]
   }
+  depends_on = [aws_iam_service_linked_role.ecs]
 }
 
 # ---------------------------------------------

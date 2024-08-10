@@ -12,7 +12,7 @@
           backend "s3" {
             bucket  = "{バケット名}"
             key     = "{キー名}"
-            region  = "ap-northeast-1"
+            region  = "ap-northeast-3"
             profile = "terraform"
           }
         }

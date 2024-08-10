@@ -25,11 +25,13 @@ resource "aws_ssm_parameter" "username" {
   name  = "/${var.project}/${var.environment}/app/MYSQL_USERNAME"
   type  = "SecureString"
   value = var.username
+  overwrite = true
 }
 
 resource "aws_ssm_parameter" "password" {
   name  = "/${var.project}/${var.environment}/app/MYSQL_PASSWORD"
   type  = "SecureString"
   value = var.password
+  overwrite = true
 }
 
